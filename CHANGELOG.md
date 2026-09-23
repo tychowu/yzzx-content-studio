@@ -1,5 +1,9 @@
 # 变更日志
 
+## [2.8.1] - 2026-09-23
+
+- 把写进 Notion 的五个板块由「可折叠 H2（heading_2）」改为「可折叠 H4（heading_4）」：板块名、顺序、内容写法、属性列全部不变，仅标题层级下沉（H1–H3 过大，H5/H6 会被 Notion 自动转成 H4）。实测确认 H4 块类型存在且 {toggle="true"} 生效。ip-publish-kit §4.2、team-lead W4、README、说明书、项目配置包同步；配套技能 notion-collapsible-h2-write 更名为 notion-collapsible-h4-write，生成脚本改用常量 HEADING 统一控制层级、校验脚本严格匹配 H4（误写 H2 会报板块数 0）
+
 ## [2.8.0] - 2026-09-23
 
 - 接入「对标博主蒸馏库」（Notion 🧪 博主蒸馏库｜选题与文案创作）：新增 skill ip-benchmark-refs（按 IP 定位现场挑 1–3 位对标博主，只借 11 种「可借鉴机制」，三条铁律：不借履历 / 不抄原句 / 不把标题当正文依据；含库的正文链与五层结构映射、素材缺口闸、对标摘要输出格式、接保险三类尺度）；W1 新增第二个选题来源「捞对标库 + 选题实验库」，并新增 IP 匹配闸与素材缺口闸；topic-scout / angle-architect / script-writer 三个角色挂载该 skill 并各自补写前对标步骤；ip-topic-engine 素材检索入口与相关性闸门、ip-voice-playbook 动笔顺序同步；规格冲突一律以本包为准（库里 90 秒与封面文案不采纳，评论问题并进 CTA）；README/说明书/项目配置包同步
