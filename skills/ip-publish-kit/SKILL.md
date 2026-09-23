@@ -152,6 +152,8 @@ description: Generates the publishing package for a finished voiceover script �
 > ⛔ **不要生成发布包 HTML**（2026-09-22 用户要求取消，省时省算力）。
 > 上列 5 项**直接在对话里给出**即可，同时按第 4.2 节的格式写进 Notion；**不产出 HTML 文件、不单独成页、不发预览**。
 
+> 🔍 **交付前必查（CTA 三词禁令）**：在标题 / 简介 / 标签三处逐字搜一遍 **「微信」「私信」「评论区」**，命中任意一个就当场改掉再交付。平台会判引流并压推荐流量 —— 替代写法见 `ip-voice-playbook` §6.9。
+
 ---
 
 ## 严禁
@@ -170,3 +172,4 @@ description: Generates the publishing package for a finished voiceover script �
 - ❌ **「标题」板块漏掉 `🌟推荐`，或标了不止一个**
 - ❌ 把 `🌟推荐` 写进页面属性「标题」里
 - ❌ **「标签」不按 `视频号：` / `小红书：` / `抖音：` 三行格式写**
+- ❌ **标题 / 简介 / 标签里出现「微信」「私信」「评论区」** —— 平台判引流、直接压推荐流量（三词禁令与替代写法见 `ip-voice-playbook` §6.9）
