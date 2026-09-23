@@ -1,5 +1,9 @@
 # 变更日志
 
+## [2.9.4] - 2026-09-23
+
+- 修两个会让「自动更新」失效/报错的问题：① macOS 自带 bash 3.2 下，sync.sh 里「$变量」后面紧挨非 ASCII 字符会让变量名被误吞首字节、变量展开失效（如 echo "v$OLD_V，分支 $BRANCH" 实际输出乱码），已把 4 处全改为 ${变量} 写法并实测输出正确；② 宿主会不定时清掉源目录的 settings.json（Team 型必需），导致 git status 永远显示 D settings.json，于是 W0 版本自检永远判「有未提交改动」而不敢自动更新、sync.sh 也会拒绝更新——现改为判定「干净」时忽略 settings.json 与 .created-by-session，并在注册前自动补回 settings.json（ensure_settings）。team-lead W0 步骤 4/5、说明书、项目配置包同步
+
 ## [2.9.3] - 2026-09-23
 
 - 修正仓库可见性描述：CONTRIBUTING.md 原写「私有，需胡子哥邀请才能访问」，与实际不符（仓库为 PUBLIC），改为「公开仓库，clone 免登录；push 需先被加为 collaborator」；同时修掉两处过时描述——sync.sh 自 2.9.0 起已是安全模式（本机有未提交改动就停下、不再覆盖本地），故 A 类「纯使用」流程与 --check / --reset 说明一并更正。项目配置包同步（原「推荐 Git 私有仓库」改为公开仓库地址与权限说明）。纯文档，功能与工作流规范零变化

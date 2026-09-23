@@ -15,7 +15,20 @@ REG_SCRIPT="/Applications/WorkBuddy.app/Contents/Resources/app.asar.unpacked/res
 
 MODE="${1:-}"
 
+# 宿主会不定时清掉源目录的 settings.json（Team 型必需），这里补回来
+ensure_settings() {
+  [ -f "$PLUGIN_DIR/settings.json" ] && return 0
+  local pj="$PLUGIN_DIR/.codebuddy-plugin/plugin.json"
+  [ -f "$pj" ] || return 0
+  local agent
+  agent=$(grep -m1 '"agentName"' "$pj" | sed 's/.*: *"//;s/".*//')
+  [ -n "$agent" ] || return 0
+  printf '{\n  "agent": "%s"\n}\n' "$agent" > "$PLUGIN_DIR/settings.json"
+  echo "ℹ️ 已补回 settings.json（宿主会清掉它，Team 型必需）"
+}
+
 re_register() {
+  ensure_settings
   echo "▶ 重新注册到 WorkBuddy…"
   PY="$HOME/.workbuddy/binaries/python/envs/default/bin/python"
   [ -x "$PY" ] || PY="python3"
@@ -36,13 +49,13 @@ local_version() {
 if [ -d "$PLUGIN_DIR/.git" ]; then
   BRANCH=$(git -C "$PLUGIN_DIR" symbolic-ref --short HEAD 2>/dev/null || echo main)
   OLD_V=$(local_version "$PLUGIN_DIR")
-  echo "▶ 检查版本（当前 v$OLD_V，分支 $BRANCH）…"
+  echo "▶ 检查版本（当前 v${OLD_V}，分支 ${BRANCH}）…"
   git -C "$PLUGIN_DIR" fetch --quiet origin
   LOCAL=$(git -C "$PLUGIN_DIR" rev-parse HEAD)
   REMOTE=$(git -C "$PLUGIN_DIR" rev-parse "origin/$BRANCH")
 
   if [ "$LOCAL" = "$REMOTE" ]; then
-    echo "✅ 已是最新版 v$OLD_V，无需更新。"
+    echo "✅ 已是最新版 v${OLD_V}，无需更新。"
     exit 0
   fi
 
@@ -60,7 +73,9 @@ if [ -d "$PLUGIN_DIR/.git" ]; then
     exit 0
   fi
 
-  DIRTY=$(git -C "$PLUGIN_DIR" status --porcelain)
+  # 宿主会清掉 settings.json（Team 型必需）并写下 .created-by-session，
+  # 这两个不算「人的改动」——否则永远判定为脏，自动更新永远触发不了。
+  DIRTY=$(git -C "$PLUGIN_DIR" status --porcelain | grep -vE 'settings\.json|\.created-by-session' || true)
   if [ -n "$DIRTY" ]; then
     echo "⚠️ 本机有未提交的改动，已停止，不会覆盖你："
     echo "$DIRTY"
@@ -81,7 +96,7 @@ fi
 # 本机没有仓库：首次安装（clone 一份）
 # ---------------------------------------------------------------
 if [ "$MODE" = "--check" ]; then
-  echo "ℹ️ 本机还没有插件目录（$PLUGIN_DIR）。执行 bash sync.sh 可安装。"
+  echo "ℹ️ 本机还没有插件目录（${PLUGIN_DIR}）。执行 bash sync.sh 可安装。"
   exit 0
 fi
 
