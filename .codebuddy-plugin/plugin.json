@@ -1,0 +1,148 @@
+{
+  "name": "yzzx-content-studio",
+  "version": "2.8.0",
+  "description": "Multi-IP MCN content studio for Hong Kong insurance self-media: mines insurance knowledge from ima, matches each IP's positioning with high-traffic topics, produces a checkable 10-topic page with 5 angles each, then writes voiceover scripts capped at 700 characters, runs compliance review and generates publishing packages.",
+  "author": {
+    "name": "WorkBuddy",
+    "email": "experts@workbuddy.cn"
+  },
+  "agents": [
+    "./agents/yzzx-content-studio-team-lead.md",
+    "./agents/topic-scout.md",
+    "./agents/angle-architect.md",
+    "./agents/script-writer.md",
+    "./agents/compliance-guard.md"
+  ],
+  "skills": [
+    "./skills/ip-persona-resolver",
+    "./skills/ip-topic-engine",
+    "./skills/ip-voice-playbook",
+    "./skills/ip-publish-kit",
+    "./skills/ip-benchmark-refs"
+  ],
+  "expertType": "team",
+  "agentName": "yzzx-content-studio-team-lead",
+  "teamInfo": {
+    "leadAgent": "yzzx-content-studio-team-lead",
+    "memberAgents": [
+      "topic-scout",
+      "angle-architect",
+      "script-writer",
+      "compliance-guard"
+    ]
+  },
+  "displayName": {
+    "en": "Yanzhi Content Studio",
+    "zh": "言直在线选题组"
+  },
+  "profession": {
+    "en": "Yanzhi Content Studio",
+    "zh": "言直在线选题组"
+  },
+  "displayDescription": {
+    "en": "Learn insurance from ima + mine trends into a checkable 10-topic page with 5 angles, then ≤700-character scripts and a publishing kit. | v2.8.0",
+    "zh": "学 ima 保险、抓热点出可勾选选题×5 立意，写 ≤700 字口播并出发布包。｜v2.8.0"
+  },
+  "avatar": "avatars/team.png",
+  "categoryId": "06-ContentCreative",
+  "defaultInitPrompt": {
+    "zh": "给我出 10 个选题，每个 5 个立意点",
+    "en": "Give me 10 topics, each with 5 angles"
+  },
+  "plugin": "yzzx-content-studio",
+  "tags": [
+    {
+      "en": "Insurance Topic Mining",
+      "zh": "保险选题挖掘"
+    },
+    {
+      "en": "Voiceover Script",
+      "zh": "口播文案"
+    },
+    {
+      "en": "Compliance Review",
+      "zh": "合规终审"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "给我出 10 个选题，每个 5 个立意点",
+      "en": "Give me 10 topics, each with 5 angles"
+    },
+    {
+      "zh": "我有条素材（链接、文案都行），帮我出选题和立意",
+      "en": "I have a source (link or copy) - turn it into topics and angles"
+    },
+    {
+      "zh": "这个立意确认了，写 ≤700 字口播稿，合规后出标题和标签",
+      "en": "This angle is confirmed - write a <=700-character script, then compliance check plus titles and hashtags"
+    }
+  ],
+  "members": [
+    {
+      "id": "yzzx-content-studio-team-lead",
+      "displayName": {
+        "en": "Song Dingdang",
+        "zh": "宋定档"
+      },
+      "profession": {
+        "en": "Content Producer",
+        "zh": "内容总制片"
+      },
+      "avatar": "avatars/yzzx-content-studio-team-lead.png",
+      "role": "lead"
+    },
+    {
+      "id": "topic-scout",
+      "displayName": {
+        "en": "Shi Wenda",
+        "zh": "时闻达"
+      },
+      "profession": {
+        "en": "Trend & Topic Scout",
+        "zh": "热点选题官"
+      },
+      "avatar": "avatars/topic-scout.png",
+      "role": "member"
+    },
+    {
+      "id": "angle-architect",
+      "displayName": {
+        "en": "Chen Jiandi",
+        "zh": "陈见地"
+      },
+      "profession": {
+        "en": "Angle Architect",
+        "zh": "立意策划"
+      },
+      "avatar": "avatars/angle-architect.png",
+      "role": "member"
+    },
+    {
+      "id": "script-writer",
+      "displayName": {
+        "en": "Wen Chengzhang",
+        "zh": "文成章"
+      },
+      "profession": {
+        "en": "Voiceover Script Writer",
+        "zh": "口播主笔"
+      },
+      "avatar": "avatars/script-writer.png",
+      "role": "member"
+    },
+    {
+      "id": "compliance-guard",
+      "displayName": {
+        "en": "Zheng Wuyu",
+        "zh": "郑无虞"
+      },
+      "profession": {
+        "en": "Compliance & Fact-Check Guard",
+        "zh": "合规风控官"
+      },
+      "avatar": "avatars/compliance-guard.png",
+      "role": "member"
+    }
+  ]
+}
