@@ -3,19 +3,21 @@
 这是一个**团队共用的专家包源码仓库**。每个人在本地修改后，通过 Git 把改动汇聚到这里，再分发给所有人。这样人人都能用上最新版。
 
 ## 仓库
-- 地址：`https://github.com/tychowu/yzzx-content-studio`（私有，需胡子哥邀请才能访问）
+- 地址：`https://github.com/tychowu/yzzx-content-studio` —— **公开仓库**，任何人可访问、可直接 `git clone`，无需登录。
+- ⚠️ **公开 ≠ 谁都能改**：推送（`push`）权限只给被加为 collaborator 的人。要动手改代码，先找胡子哥加你。
 - 本机插件目录：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/yzzx-content-studio/`
 
 ## 你属于哪类？
 
 ### A. 只想要最新版（纯使用）
-直接跑仓库里的同步脚本（克隆最新 → 覆盖本地 → 重新注册）：
+直接跑仓库里的同步脚本（拉取最新 → 重新注册）：
 ```bash
 bash sync.sh
 ```
 跑完刷新 WorkBuddy 专家中心即可。
 
-> ⚠️ `sync.sh` 会**覆盖**本地插件目录。如果你自己改过且还没提交，先备份或改用下方 B 流程。
+> 🔒 `sync.sh` 默认是**安全模式**：本机有未提交改动就停下，**绝不覆盖**你的活。
+> 另有 `--check`（只比对版本差异，什么都不改）与 `--reset`（丢弃本地改动硬对齐远程，危险）。
 
 ### B. 改了想让大家用（贡献者）
 ```bash
@@ -27,7 +29,8 @@ git add -A
 git commit -m "改了什么：例如 新增 IP 卡 / 收紧合规词"
 git push
 ```
-首次 clone 前先 `gh auth login`（或用 GitHub 账号密码 / token），否则拉不下来私有库。
+仓库是**公开**的，`clone` 与 `git pull` **都不需要登录**；只有 `git push` 需要写权限 ——
+先让胡子哥把你加为 collaborator，本地 `gh auth login`（或配 SSH key / token）后即可推送。
 
 ## 协作红线
 1. **改前先 `git pull`**，别闷头覆盖别人。
