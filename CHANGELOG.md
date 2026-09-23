@@ -1,5 +1,9 @@
 # 变更日志
 
+## [2.9.1] - 2026-09-23
+
+- 补 CONTRIBUTING.md 的「发版与推送」章节：说明 release.py 的 --bump / --push / --push-only 用法、推送到 GitHub 前先问仓库主人的惯例、以及改完必须重注册的提醒（纯文档补充，功能与规范无变化）
+
 ## [2.9.0] - 2026-09-23
 
 - 新增 CTA 三词禁令：结尾行动呼吁与全篇（口播稿 / 标题 / 简介 / 标签）一律不得出现「微信」「私信」「评论区」及其组合变体（加微信 / 私信我 / 评论区留言），平台会判引流并压推荐流量；ip-voice-playbook 新增 §6.9 给出三条安全替代路线，script-writer 质量标准与严禁、compliance-guard 二查、ip-publish-kit 交付前必查同步加重。W0 前置自检从「连接器」扩为「连接器 + 版本」：本机包若为 git 仓库则核对远程版本，落后且工作区干净时自动 pull + 重注册，有未提交改动时停下先问、绝不覆盖，非 git 仓库静默跳过；team-lead 严禁行为同步两条。sync.sh 重写为安全模式（不再 rm -rf 覆盖本地改动，新增 --check / --reset）。README 重写为 GitHub 风格并注明「专为 WorkBuddy 开发的专家组」。release.py 新增 --push / --push-only（推送分支与 tag 并自动建 GitHub Release）

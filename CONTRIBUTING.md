@@ -41,3 +41,25 @@ git push
 专家包是本地注册制的——改完文件不等于生效：
 - 纯使用者：跑 `sync.sh` 已自动重注册。
 - 贡献者本地自测：改完跑一次 `sync.sh`，或到 WorkBuddy 专家中心手动刷新 / 重注册。
+
+## 改了功能/结构 → 要发版，再决定推不推
+
+只改错别字、润色文案**不用发版**；改了角色、技能、工作流或硬规范，就要递增版本号：
+
+```bash
+PY=~/.workbuddy/binaries/python/versions/3.13.12/bin/python3
+
+# ① 发版（本地）：升版本号 + 写 CHANGELOG + 校验 + 打包 + 刷本机缓存 + git commit & tag
+$PY ~/.workbuddy/skills/expert-release/scripts/release.py --bump minor -m "改了什么（会写进 CHANGELOG）"
+
+# ② 推送（对外）：推 main + tag，并在 GitHub 自动建一条带说明的 Release（附 zip）
+$PY ~/.workbuddy/skills/expert-release/scripts/release.py --push-only -m "一句话摘要"
+```
+
+`--bump` 选 `patch` / `minor` / `major`，判据见 [`RELEASE.md`](RELEASE.md)。
+
+> **推之前先问一句。** 这是团队共用仓库，一推所有人可见。
+> 惯例是：改完 → 发版本地验证 → **问过仓库主人** → 再推。
+
+**版本号一定要跟着改**，并写清「这一版改了什么」（CHANGELOG + Release 说明都由脚本自动生成，别只 commit 不写说明）——
+同事排查问题时，第一句问的就是「你装的是哪一版」。
