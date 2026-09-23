@@ -6,7 +6,7 @@
 [![changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue)](CHANGELOG.md)
 
 > **这是专为 WorkBuddy 开发的专家组（Expert Pack）** —— 不是通用脚本库，装进 WorkBuddy 才能跑。
-> Team 型 · 5 个角色协作 ｜ 当前版本 **2.9.1**（2026-09-23）
+> Team 型 · 5 个角色协作 ｜ 当前版本 **2.9.2**（2026-09-23）
 > 发布规则见 [`RELEASE.md`](RELEASE.md)，变更历史见 [`CHANGELOG.md`](CHANGELOG.md)，历史版本见 [Releases](https://github.com/tychowu/yzzx-content-studio/releases)。
 
 香港保险自媒体的**多 IP 内容生产流水线**：从热点选题 → 立意拆解 → ≤700 字口播稿 → 合规终审 → 发布文案（写入 Notion），一条线跑完。
