@@ -112,6 +112,10 @@
 
 ## 七、发布流程
 
+> **节奏（重要）**：**改 ≠ 发版**。日常改动只改源目录 —— 不升号、不打包、不推送，攒到仓库主人
+> 明确说「发布 / 发版 / 更新一版 / 推一下」时，才执行下面的完整链。
+> 发布产物**只落在 GitHub Releases 页**，不再单独把 zip / 安装说明发出去。
+
 ```bash
 PY=/Users/tychowu/.workbuddy/binaries/python/versions/3.13.12/bin/python3
 
@@ -133,20 +137,25 @@ $PY ~/.workbuddy/skills/expert-release/scripts/release.py --bump minor -m "xxx" 
 
 ---
 
-## 八、发完还要做的两步（脚本不会代劳）
+## 八、发完之后
 
-1. **企业后台上传**：企业管理后台 → 专家管理 → 新增版本 → 上传 zip → **保存并启用**（只点「仅保存」是草稿，成员看不到）
-2. **项目资产库留档**：把 zip 传一份过去，方便同事回退到旧版本
+**分发只走 GitHub Releases 页（2026-09-23 起）**：发布时 `--push` 会把 zip 挂到对应 Release 上，
+同事自己去下最新版，或用 `sync.sh` 拉。**不再单独把 zip / 安装说明发出去。**
+
+| 事项 | 谁做 | 说明 |
+|---|---|---|
+| 建 Release + 附 zip | `release.py --push` 自动 | 同事取包的**唯一入口** |
+| 项目资产库留档（回退用） | 仓库主人 | **属 Project Drive 写操作，动手前先经确认** |
+| 企业后台上传 | 暂不执行 | 现状不走企业后台，做法保留备查 |
 
 ## 九、本地即时生效（本机）
 
-企业后台是给同事用的。**自己这台电脑**要立刻用上新版，把源目录覆盖进安装缓存即可：
+不用手动折腾。`release.py` 会自动把新版本写进本机安装缓存
+（`~/.workbuddy/plugins/cache/my-experts/yzzx-content-studio/<新版本>/`），
+并把 `installed_plugins.json` 的 `installPath` / `version` 指过去。
 
-```bash
-CACHE=~/.workbuddy/plugins/cache/my-experts/yzzx-content-studio/<新版本>
-cp -R ~/.workbuddy/plugins/marketplaces/my-experts/plugins/yzzx-content-studio "$CACHE"
-# 再把 installed_plugins.json 里该插件的 installPath / version 指到新版本
-```
+> ⚠️ **别用 `cp -R 源目录 → cache/` 手动刷缓存**：发版后源目录的 `settings.json` 可能已被宿主清掉，
+> 复制出来的是残缺版本。需要干净副本就从刚打好的 zip 里取。
 
 ## 十、回退
 

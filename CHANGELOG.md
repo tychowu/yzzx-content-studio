@@ -1,5 +1,9 @@
 # 变更日志
 
+## [2.9.5] - 2026-09-24
+
+- 确立「改 ≠ 发布」的交付节奏：日常只改源目录、发布才走完整链；分发只走 GitHub Releases 页，不再单独发 zip/安装说明；修正 RELEASE.md 第九节过时的「cp -R 刷缓存」说法
+
 ## [2.9.4] - 2026-09-23
 
 - 修两个会让「自动更新」失效/报错的问题：① macOS 自带 bash 3.2 下，sync.sh 里「$变量」后面紧挨非 ASCII 字符会让变量名被误吞首字节、变量展开失效（如 echo "v$OLD_V，分支 $BRANCH" 实际输出乱码），已把 4 处全改为 ${变量} 写法并实测输出正确；② 宿主会不定时清掉源目录的 settings.json（Team 型必需），导致 git status 永远显示 D settings.json，于是 W0 版本自检永远判「有未提交改动」而不敢自动更新、sync.sh 也会拒绝更新——现改为判定「干净」时忽略 settings.json 与 .created-by-session，并在注册前自动补回 settings.json（ensure_settings）。team-lead W0 步骤 4/5、说明书、项目配置包同步

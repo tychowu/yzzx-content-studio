@@ -6,7 +6,7 @@
 [![changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue)](CHANGELOG.md)
 
 > **这是专为 WorkBuddy 开发的专家组（Expert Pack）** —— 不是通用脚本库，装进 WorkBuddy 才能跑。
-> Team 型 · 5 个角色协作 ｜ 当前版本 **2.9.4**（2026-09-23）
+> Team 型 · 5 个角色协作 ｜ 当前版本 **2.9.5**（2026-09-23）
 > 发布规则见 [`RELEASE.md`](RELEASE.md)，变更历史见 [`CHANGELOG.md`](CHANGELOG.md)，历史版本见 [Releases](https://github.com/tychowu/yzzx-content-studio/releases)。
 
 香港保险自媒体的**多 IP 内容生产流水线**：从热点选题 → 立意拆解 → ≤700 字口播稿 → 合规终审 → 发布文案（写入 Notion），一条线跑完。
@@ -30,7 +30,7 @@
 
 1. 到 [Releases](https://github.com/tychowu/yzzx-content-studio/releases) 下载最新版 `yzzx-content-studio-vX.Y.Z.zip`
 2. WorkBuddy → **专家中心 → 导入专家** → 选这个 zip
-3. 群里找一下《给同事的安装说明》（PDF），里面有 ima / Notion 授权的完整步骤
+3. ima / Notion 的授权步骤见下方「外部依赖」一节（首次使用需管理员先把你加进对应共享库）
 
 ### 方式 B · 克隆仓库（推荐给要改的人）
 
@@ -185,6 +185,19 @@ bash yzzx-content-studio/sync.sh      # 安装 / 更新到最新版，并自动�
 **每次发版都会**：更新 `plugin.json` 版本号与卡片描述 → 写进 `CHANGELOG.md` → git commit + tag → 在 [Releases](https://github.com/tychowu/yzzx-content-studio/releases) 建一条带说明的 release（附对应 zip）。
 
 装的是哪一版？看 WorkBuddy 专家卡片底部的 `vX.Y.Z`。
+
+### 发布节奏（维护者必读）
+
+**改动是改动，发布是发布，两件事分开做。**
+
+| 阶段 | 做什么 | 什么时候 |
+|---|---|---|
+| **① 改** | 只改源目录里的文件，**不动版本号、不打包、不推送** | 随时，改完攒着 |
+| **② 发布** | 升版本号 → 校验 → 打包 → commit + tag → 推送 → 建 Release（附 zip） | 只在仓库主人明确说「发布 / 发版 / 更新一版 / 推一下」时 |
+
+- **别改一处发一版** —— 一天改五处攒着发一次，版本号才不会虚涨。
+- **发布后不单独传包**：zip 只在 GitHub [Releases](https://github.com/tychowu/yzzx-content-studio/releases) 页，同事自己去下最新版。
+- 同事本机不用手动折腾：`bash sync.sh`，或下一次对话时 **W0 版本自检**会自动把它拉上去。
 
 ## 贡献
 

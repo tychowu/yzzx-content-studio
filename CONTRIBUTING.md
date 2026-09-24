@@ -45,17 +45,28 @@ git push
 - 纯使用者：跑 `sync.sh` 已自动重注册。
 - 贡献者本地自测：改完跑一次 `sync.sh`，或到 WorkBuddy 专家中心手动刷新 / 重注册。
 
-## 改了功能/结构 → 要发版，再决定推不推
+## 发布节奏（重要）
 
-只改错别字、润色文案**不用发版**；改了角色、技能、工作流或硬规范，就要递增版本号：
+**改动 ≠ 发布，这是两件事，分开做。**
+
+| 阶段 | 做什么 | 触发 |
+|---|---|---|
+| **① 改** | 只改源目录文件，**不动版本号、不跑 `release.py`、不打包、不推送** | 随时 |
+| **② 发布** | 升版本 → 校验 → 注册 → 打包 → commit + tag → 推 `main` + tag → 建 GitHub Release（附 zip） | **只在仓库主人明确说**「发布 / 发版 / 发个新版本 / 更新一版 / 升版本 / 推一下」 |
+
+- 改完**不要**顺手发版，也**不要**每次追着问「要不要发布」—— 攒到一起，等指令。
+- 需要仓库主人点头的事只有两件：**推 `main`**（团队共用仓库，一推全员可见）与**传资产库留档**。
+
+### 真要发布时
 
 ```bash
 PY=~/.workbuddy/binaries/python/versions/3.13.12/bin/python3
 
-# ① 发版（本地）：升版本号 + 写 CHANGELOG + 校验 + 打包 + 刷本机缓存 + git commit & tag
-$PY ~/.workbuddy/skills/expert-release/scripts/release.py --bump minor -m "改了什么（会写进 CHANGELOG）"
+# 发版 + 推送 + 建 Release（一步到位；不带 --push 就只是本地发版）
+$PY ~/.workbuddy/skills/expert-release/scripts/release.py --bump patch \
+  -m "改了什么（会写进 CHANGELOG）" --push
 
-# ② 推送（对外）：推 main + tag，并在 GitHub 自动建一条带说明的 Release（附 zip）
+# 版本已发过，只想把当前版本推上去（不升号、不重打包）
 $PY ~/.workbuddy/skills/expert-release/scripts/release.py --push-only -m "一句话摘要"
 ```
 
@@ -64,5 +75,12 @@ $PY ~/.workbuddy/skills/expert-release/scripts/release.py --push-only -m "一句
 > **推之前先问一句。** 这是团队共用仓库，一推所有人可见。
 > 惯例是：改完 → 发版本地验证 → **问过仓库主人** → 再推。
 
+### 发布之后
+
+**不再单独发 zip 或安装说明文件** —— 包只在 GitHub
+[Releases](https://github.com/tychowu/yzzx-content-studio/releases) 页，同事自己去下最新版
+（或用 `sync.sh` 拉）。发布完只要说清「这一版是什么版本、改了什么」。
+
 **版本号一定要跟着改**，并写清「这一版改了什么」（CHANGELOG + Release 说明都由脚本自动生成，别只 commit 不写说明）——
 同事排查问题时，第一句问的就是「你装的是哪一版」。
+
