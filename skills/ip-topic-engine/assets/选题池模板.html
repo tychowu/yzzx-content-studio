@@ -5,7 +5,7 @@
   ============================================================================
   用法：主理人（宋定档）在 W1 Phase 4 必须基于本文件生成交付页。
     · 复制本文件 → 替换 {{IP名}} / {{日期}} / 页头统计 / 郑无虞总纲
-    · article.topic 复制 10 份（T1–T10），逐张替换所有 {{...}} 占位内容
+    · article.topic 复制 8 份（T1–T8），逐张替换所有 {{...}} 占位内容
     · **CSS 与 JS 一律照抄，不要改写**（这是"展示形式"的载体，用户已确认要固定）
     · 生成后不要留 {{ }} 占位符
 
@@ -208,7 +208,7 @@
 <header>
   <div class="wrap">
     <h1>{{IP名}} · 周选题池</h1>
-    <div class="sub">生成时间 {{日期}} ｜ 选题：时闻达 ｜ 立意：陈见地 ｜ 合规：郑无虞 ｜ 主编：宋定档</div>
+    <div class="sub">生成时间 {{日期}} ｜ 选题与立意：时闻达 ｜ 合规：郑无虞 ｜ 主编：宋定档</div>
     <div class="metarow">
       <span class="chip">共 <b>10</b> 个选题</span>
       <span class="chip">每个 <b>5</b> 个立意</span>
@@ -239,9 +239,9 @@
     </div>
   </div>
 
-  <!-- ======================= 选题卡：复制 10 份（T1–T10） ======================= -->
+  <!-- ======================= 选题卡：复制 8 份（T1–T8） ======================= -->
   <!-- 每张卡必须替换：T1→Tn、{{选题标题}}、{{大兴趣点}}、合规色 class（g/y/r）+ 徽章文字、
-       热点来源 / 保险理念结合点 / 击中痛点 / 事实支撑 / 传播指数 / 必改项、
+       热点来源 / 新闻来源 / 保险理念结合点 / 击中痛点 / 传播指数 / 必改项、
        5 条立意的 code(T1-a…T1-e) 与标题/切入角度/完整立意、data-topic="T1"（四处：article / drop / textarea / customflag） -->
   <article class="topic y" data-topic="T1">
     <div class="thead">
@@ -254,10 +254,10 @@
       <div class="cat">大兴趣点：{{大兴趣点}}</div>
     </div>
     <div class="tbody">
-      <div class="field"><div class="fkey">热点来源</div><div class="fval">{{热点来源：具体事件／话题 + 媒体 + 日期，必须真实可核}}</div></div>
+      <div class="field"><div class="fkey">热点来源</div><div class="fval">{{热点来源：具体事件／话题 + 一句话来源，确认真实在发生即可}}</div></div>
       <div class="field"><div class="fkey">保险理念<br>结合点</div><div class="fval hi"><strong>{{保险理念结合点}}</strong> —— {{机制说明，不能只写「保险很重要」}}</div></div>
       <div class="field"><div class="fkey">击中痛点</div><div class="fval">{{该 IP 客群的哪个具体痛点／买点}}</div></div>
-      <div class="field"><div class="fkey">事实支撑</div><div class="fval">✅ {{可核数据 1}}<br>✅ {{可核数据 2}}<br>⚠️【待核实】{{核不到就删}}</div></div>
+      <div class="field"><div class="fkey">新闻来源</div><div class="fval">{{事件 + 可直接打开的具体页面 URL + 媒体名}}<br>{{URL 必须是具体页面，不许写首页／搜索页；记不下来就写「来源待补」}}</div></div>
       <div class="field"><div class="fkey">传播指数</div><div class="fval"><span class="stars">★★★★☆</span> {{一句话理由}}</div></div>
       <div class="warn"><b>必改项：</b>{{写稿阶段必须落实的弱化／替换要求}}<br><b>放行条件：</b>{{满足什么就能写；违反会降级到什么色}}</div>
     </div>
@@ -325,9 +325,9 @@
 
   <div class="panel" style="margin-top:26px;">
     <h2>合规终审一页话</h2>
-    <p>{{郑无虞对本批 10 个选题的整体结论：几条可直接写、几条需弱化、有无整题砍掉}}</p>
+    <p>{{郑无虞对本批 8 个选题的整体结论：几条可直接写、几条需弱化、有无整题砍掉}}</p>
     <p><b>写稿阶段三条红线</b> —— {{①… ②… ③…}}</p>
-    <p><b>必须先修的事实问题</b> —— {{…}}</p>
+    <p><b>必须先修的表达问题</b> —— {{口径／说法上要先改准的地方}}</p>
     <p><b>风险点排序</b> —— {{…}}</p>
   </div>
 
